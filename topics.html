@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeAcademy - Навчальні теми</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; }
+        header, footer { background-color: #2c3e50; color: #fff; padding: 1rem; }
+        .container { padding: 20px; max-width: 1000px; margin: 0 auto; }
+        .topic-card { border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin-bottom: 20px; display: flex; gap: 20px; align-items: flex-start; }
+        .topic-card img { border-radius: 5px; object-fit: cover; }
+        .topic-info h3 { margin-top: 0; }
+        .btn { display: inline-block; padding: 10px 20px; background: #3498db; color: white; text-decoration: none; border-radius: 4px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <img src="logo.png" alt="CodeAcademy Logo" width="50" height="50">
+            <h1>CodeAcademy — Навчальні теми</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="index.html" class="btn">&larr; Перейти на Головну сторінку</a>
+
+        <h2>Перелік навчальних тем</h2>
+
+        <!-- Тема 1 -->
+        <section class="topic-card">
+            <img src="python_intro.jpg" alt="Вступ до Python" width="150" height="150">
+            <div class="topic-info">
+                <h3>1. Вступ до синтаксису Python</h3>
+                <p><b>Назви уроків:</b> Установка середовища, Змінні та типи даних, Введення/виведення даних.</p>
+                <p><b>Тип завдань:</b> Інтерактивні тести та написання базових скриптів.</p>
+            </div>
+        </section>
+
+        <!-- Тема 2 -->
+        <section class="topic-card">
+            <img src="control_flow.jpg" alt="Управляючі конструкції" width="150" height="150">
+            <div class="topic-info">
+                <h3>2. Управляючі конструкції</h3>
+                <p><b>Назви уроків:</b> Розгалуження if-else, Цикли while та for, Оператори break і continue.</p>
+                <p><b>Тип завдань:</b> Логічні задачі та алгоритмічні вправи.</p>
+            </div>
+        </section>
+
+        <!-- Тема 3 -->
+        <section class="topic-card">
+            <img src="data_structures.jpg" alt="Структури даних" width="150" height="150">
+            <div class="topic-info">
+                <h3>3. Списки, кортежі та словники</h3>
+                <p><b>Назви уроків:</b> Робота зі списками, Методи словників, Множини та їх застосування.</p>
+                <p><b>Тип завдань:</b> Практичне кодування та обробка масивів даних.</p>
+            </div>
+        </section>
+
+        <!-- Тема 4 -->
+        <section class="topic-card">
+            <img src="functions.jpg" alt="Функції" width="150" height="150">
+            <div class="topic-info">
+                <h3>4. Функції та модульність</h3>
+                <p><b>Назви уроків:</b> Оголошення функцій, Аргументи та повернення значень, Лямбда-функції.</p>
+                <p><b>Тип завдань:</b> Рефакторинг коду та міні-проекти.</p>
+            </div>
+        </section>
+
+        <!-- Тема 5 -->
+        <section class="topic-card">
+            <img src="oop.jpg" alt="ООП" width="150" height="150">
+            <div class="topic-info">
+                <h3>5. Об'єктно-орієнтоване програмування</h3>
+                <p><b>Назви уроків:</b> Класи та об'єкти, Успадкування, Інкапсуляція та Поліморфізм.</p>
+                <p><b>Тип завдань:</b> Моделювання предметної області та курсовий проект.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 CodeAcademy. Всі права захищені.</p>
+    </footer>
+
+</body>
+</html>
