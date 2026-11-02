@@ -3,80 +3,327 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeAcademy - Навчальні теми</title>
+    <title>CodeAcademy — Навчальні теми</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; }
-        header, footer { background-color: #2c3e50; color: #fff; padding: 1rem; }
-        .container { padding: 20px; max-width: 1000px; margin: 0 auto; }
-        .topic-card { border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin-bottom: 20px; display: flex; gap: 20px; align-items: flex-start; }
-        .topic-card img { border-radius: 5px; object-fit: cover; }
-        .topic-info h3 { margin-top: 0; }
-        .btn { display: inline-block; padding: 10px 20px; background: #3498db; color: white; text-decoration: none; border-radius: 4px; margin-bottom: 20px; }
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border: #e2e8f0;
+            --header-bg: #0f172a;
+            --status-available: #10b981;
+            --status-dev: #f59e0b;
+            --status-planned: #64748b;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: #ffffff;
+            padding: 1.25rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-block img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .logo-block h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background-color: var(--primary);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-back:hover {
+            background-color: var(--primary-hover);
+            transform: translateX(-2px);
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .topics-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .topic-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .topic-card img {
+            border-radius: 8px;
+            object-fit: cover;
+            background-color: #e2e8f0;
+            flex-shrink: 0;
+            width: 140px;
+            height: 140px;
+        }
+
+        .topic-info {
+            flex: 1;
+        }
+
+        .topic-info h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .topic-info p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+        }
+
+        .topic-info b {
+            color: var(--text-main);
+        }
+
+        .badges-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.75rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.65rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 6px;
+        }
+
+        .badge-module {
+            background-color: #eff6ff;
+            color: var(--primary);
+        }
+
+        .badge-level {
+            background-color: #f1f5f9;
+            color: var(--text-main);
+        }
+
+        .badge-status-available {
+            background-color: #ecfdf5;
+            color: var(--status-available);
+        }
+
+        .badge-status-dev {
+            background-color: #fffbeb;
+            color: var(--status-dev);
+        }
+
+        .badge-status-planned {
+            background-color: #f1f5f9;
+            color: var(--status-planned);
+        }
+
+        @media (max-width: 640px) {
+            .topic-card {
+                flex-direction: column;
+            }
+            .topic-card img {
+                width: 100%;
+                height: 160px;
+            }
+        }
+
+        footer {
+            background-color: var(--header-bg);
+            color: #94a3b8;
+            padding: 1.5rem 0;
+            margin-top: auto;
+            font-size: 0.9rem;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <img src="logo.png" alt="CodeAcademy Logo" width="50" height="50">
-            <h1>CodeAcademy — Навчальні теми</h1>
+        <div class="header-container">
+            <div class="logo-block">
+                <img src="logo.png" alt="CodeAcademy Logo">
+                <h1>CodeAcademy — Навчальні теми</h1>
+            </div>
         </div>
     </header>
 
     <div class="container">
-        <a href="index.html" class="btn">&larr; Перейти на Головну сторінку</a>
+        <a href="index.html" class="btn-back">&larr; Перейти на Головну сторінку</a>
 
-        <h2>Перелік навчальних тем</h2>
+        <h2 class="page-title">Перелік навчальних тем</h2>
 
-        <!-- Тема 1 -->
-        <section class="topic-card">
-            <img src="python_intro.jpg" alt="Вступ до Python" width="150" height="150">
-            <div class="topic-info">
-                <h3>1. Вступ до синтаксису Python</h3>
-                <p><b>Назви уроків:</b> Установка середовища, Змінні та типи даних, Введення/виведення даних.</p>
-                <p><b>Тип завдань:</b> Інтерактивні тести та написання базових скриптів.</p>
-            </div>
-        </section>
+        <div class="topics-grid">
+            <!-- 1. Синтаксис та змінні (Модуль 1) -->
+            <section class="topic-card">
+                <img src="python_intro.jpg" alt="Синтаксис та змінні">
+                <div class="topic-info">
+                    <h3>1. Синтаксис та змінні</h3>
+                    <p><b>Назви уроків:</b> Установка Python і IDE, змінні, базові типи даних, введення та виведення даних.</p>
+                    <p><b>Тип завдань:</b> Інтерактивні тести та написання базових скриптів (4 уроки).</p>
+                    <div class="badges-group">
+                        <span class="badge badge-module">Модуль 1: Основи</span>
+                        <span class="badge badge-level">Початковий рівень</span>
+                        <span class="badge badge-status-available">Статус: Доступний</span>
+                    </div>
+                </div>
+            </section>
 
-        <!-- Тема 2 -->
-        <section class="topic-card">
-            <img src="control_flow.jpg" alt="Управляючі конструкції" width="150" height="150">
-            <div class="topic-info">
-                <h3>2. Управляючі конструкції</h3>
-                <p><b>Назви уроків:</b> Розгалуження if-else, Цикли while та for, Оператори break і continue.</p>
-                <p><b>Тип завдань:</b> Логічні задачі та алгоритмічні вправи.</p>
-            </div>
-        </section>
+            <!-- 2. Умовні оператори та цикли (Модуль 1) -->
+            <section class="topic-card">
+                <img src="control_flow.jpg" alt="Умовні оператори та цикли">
+                <div class="topic-info">
+                    <h3>2. Умовні оператори та цикли</h3>
+                    <p><b>Назви уроків:</b> Конструкції if-elif-else, цикли while та for, оператори break і continue.</p>
+                    <p><b>Тип завдань:</b> Алгоритмічні задачі та розгалужені обчислення (6 уроків).</p>
+                    <div class="badges-group">
+                        <span class="badge badge-module">Модуль 1: Основи</span>
+                        <span class="badge badge-level">Початковий рівень</span>
+                        <span class="badge badge-status-available">Статус: Доступний</span>
+                    </div>
+                </div>
+            </section>
 
-        <!-- Тема 3 -->
-        <section class="topic-card">
-            <img src="data_structures.jpg" alt="Структури даних" width="150" height="150">
-            <div class="topic-info">
-                <h3>3. Списки, кортежі та словники</h3>
-                <p><b>Назви уроків:</b> Робота зі списками, Методи словників, Множини та їх застосування.</p>
-                <p><b>Тип завдань:</b> Практичне кодування та обробка масивів даних.</p>
-            </div>
-        </section>
+            <!-- 3. Базові структури даних (Модуль 2) -->
+            <section class="topic-card">
+                <img src="data_structures.jpg" alt="Базові структури даних">
+                <div class="topic-info">
+                    <h3>3. Базові структури даних</h3>
+                    <p><b>Назви уроків:</b> Списки (lists), кортежі (tuples), словники (dicts) та методи роботи з ними.</p>
+                    <p><b>Тип завдань:</b> Практичне кодування та маніпуляції з колекціями даних (8 уроків).</p>
+                    <div class="badges-group">
+                        <span class="badge badge-module">Модуль 2: Структури даних</span>
+                        <span class="badge badge-level">Середній рівень</span>
+                        <span class="badge badge-status-available">Статус: Доступний</span>
+                    </div>
+                </div>
+            </section>
 
-        <!-- Тема 4 -->
-        <section class="topic-card">
-            <img src="functions.jpg" alt="Функції" width="150" height="150">
-            <div class="topic-info">
-                <h3>4. Функції та модульність</h3>
-                <p><b>Назви уроків:</b> Оголошення функцій, Аргументи та повернення значень, Лямбда-функції.</p>
-                <p><b>Тип завдань:</b> Рефакторинг коду та міні-проекти.</p>
-            </div>
-        </section>
+            <!-- 4. Поглиблені структури даних (Модуль 2) -->
+            <section class="topic-card">
+                <img src="functions.jpg" alt="Поглиблені структури даних">
+                <div class="topic-info">
+                    <h3>4. Поглиблені структури даних</h3>
+                    <p><b>Назви уроків:</b> Множини (sets), генератори списків, стек, черга, базові деревні структури.</p>
+                    <p><b>Тип завдань:</b> Оптимізація алгоритмів та робота зі складними колекціями (5 уроків).</p>
+                    <div class="badges-group">
+                        <span class="badge badge-module">Модуль 2: Структури даних</span>
+                        <span class="badge badge-level">Середній рівень</span>
+                        <span class="badge badge-status-dev">Статус: В розробці</span>
+                    </div>
+                </div>
+            </section>
 
-        <!-- Тема 5 -->
-        <section class="topic-card">
-            <img src="oop.jpg" alt="ООП" width="150" height="150">
-            <div class="topic-info">
-                <h3>5. Об'єктно-орієнтоване програмування</h3>
-                <p><b>Назви уроків:</b> Класи та об'єкти, Успадкування, Інкапсуляція та Поліморфізм.</p>
-                <p><b>Тип завдань:</b> Моделювання предметної області та курсовий проект.</p>
-            </div>
-        </section>
+            <!-- 5. Класи та об'єкти (Модуль 3) -->
+            <section class="topic-card">
+                <img src="oop.jpg" alt="Класи та об'єкти">
+                <div class="topic-info">
+                    <h3>5. Класи та об'єкти (ООП)</h3>
+                    <p><b>Назви уроків:</b> Принципи ООП, створення класів, атрибути, методи, успадкування та поліморфізм.</p>
+                    <p><b>Тип завдань:</b> Об'єктно-орієнтоване моделювання програмних систем (7 уроків).</p>
+                    <div class="badges-group">
+                        <span class="badge badge-module">Модуль 3: ООП</span>
+                        <span class="badge badge-level">Просунутий рівень</span>
+                        <span class="badge badge-status-dev">Статус: В розробці</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Підсумковий проект та сертифікація -->
+            <section class="topic-card">
+                <img src="functions.jpg" alt="Підсумковий проект">
+                <div class="topic-info">
+                    <h3>6. Підсумковий проект та сертифікація</h3>
+                    <p><b>Назви уроків:</b> Розробка підсумкового Python-застосунку, код-рев'ю, фінальне тестування.</p>
+                    <p><b>Тип завдань:</b> Комплексний практичний проект та отримання сертифіката.</p>
+                    <div class="badges-group">
+                        <span class="badge badge-module">Підсумковий модуль</span>
+                        <span class="badge badge-level">Всі рівні</span>
+                        <span class="badge badge-status-planned">Статус: Заплановано</span>
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
 
     <footer>

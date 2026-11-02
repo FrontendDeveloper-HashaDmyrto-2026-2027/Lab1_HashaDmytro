@@ -3,97 +3,317 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeAcademy - Зворотній зв’язок</title>
+    <title>CodeAcademy — Зворотній зв’язок</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; }
-        header, footer { background-color: #2c3e50; color: #fff; padding: 1rem; }
-        .container { padding: 20px; max-width: 700px; margin: 0 auto; }
-        fieldset { border: 1px solid #0056b3; border-radius: 5px; padding: 15px; margin-bottom: 20px; }
-        legend { font-weight: bold; color: #0056b3; padding: 0 5px; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
-        input[type="text"], input[type="email"], input[type="number"], select, textarea {
-            width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --danger: #ef4444;
+            --danger-hover: #dc2626;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border: #cbd5e1;
+            --header-bg: #0f172a;
         }
-        .radio-group label { font-weight: normal; display: inline-block; margin-right: 15px; }
-        .btn-group { display: flex; gap: 10px; }
-        .btn { padding: 10px 20px; background: #2ecc71; color: white; border: none; border-radius: 4px; cursor: pointer; }
-        .btn-reset { background: #e74c3c; }
-        .btn-link { display: inline-block; padding: 8px 15px; background: #3498db; color: white; text-decoration: none; border-radius: 4px; margin-bottom: 15px; }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: #ffffff;
+            padding: 1.25rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-block img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover; /* Виправляє спотворення: обрізає зайве та зберігає пропорції */
+            border-radius: 8px;
+            display: block;
+        }
+
+        .logo-block h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 720px;
+            width: 100%;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background-color: var(--primary);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-back:hover {
+            background-color: var(--primary-hover);
+            transform: translateX(-2px);
+        }
+
+        .form-card {
+            background: var(--bg-card);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        fieldset {
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            background-color: #f8fafc;
+        }
+
+        legend {
+            font-weight: 700;
+            color: #1d4ed8;
+            padding: 0 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+            color: var(--text-main);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.65rem 0.85rem;
+            font-family: inherit;
+            font-size: 0.95rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background-color: #ffffff;
+            color: var(--text-main);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="number"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        .radio-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.4rem;
+        }
+
+        .radio-label {
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .checkbox-label {
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-submit {
+            padding: 0.75rem 1.5rem;
+            background-color: #10b981;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: #059669;
+        }
+
+        .btn-reset {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--danger);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-reset:hover {
+            background-color: var(--danger-hover);
+        }
+
+        footer {
+            background-color: var(--header-bg);
+            color: #94a3b8;
+            padding: 1.5rem 0;
+            margin-top: auto;
+            font-size: 0.9rem;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <img src="logo.png" alt="CodeAcademy Logo" width="50" height="50">
-            <h1>CodeAcademy — Зворотній зв’язок</h1>
+        <div class="header-container">
+            <div class="logo-block">
+                <img src="logo.png" alt="CodeAcademy Logo" width="40" height="40">
+                <h1>CodeAcademy — Зворотній зв’язок</h1>
+            </div>
         </div>
     </header>
 
     <div class="container">
-        <a href="index.html" class="btn-link">&larr; Перейти на Головну сторінку</a>
+        <a href="index.html" class="btn-back">&larr; Перейти на Головну сторінку</a>
 
-        <h2>Форма зворотнього зв'язку</h2>
+        <div class="form-card">
+            <h2>Форма зворотнього зв'язку</h2>
 
-        <form action="#" method="post">
+            <form action="#" method="post">
 
-            <!-- Групування полів 1, 2, 3, 4 -->
-            <fieldset>
-                <legend>Персональна інформація</legend>
+                <!-- Поля 1, 2, 3, 4 згруповані рамкою fieldset -->
+                <fieldset>
+                    <legend>Персональна інформація</legend>
+
+                    <div class="form-group">
+                        <label for="fullname">Прізвище та ім’я *</label>
+                        <input type="text" id="fullname" name="fullname" required placeholder="Іванов Іван">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required placeholder="example@mail.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age">Вік *</label>
+                        <input type="number" id="age" name="age" min="10" max="100" required placeholder="18">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Чи вже вивчаєте мову *?</label>
+                        <div class="radio-options">
+                            <label class="radio-label"><input type="radio" name="experience" value="pro" required> так, я профі</label>
+                            <label class="radio-label"><input type="radio" name="experience" value="beginner"> так, але знаю початкові знання</label>
+                            <label class="radio-label"><input type="radio" name="experience" value="planning"> планую</label>
+                            <label class="radio-label"><input type="radio" name="experience" value="no"> ні</label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Додаткові поля -->
+                <div class="form-group">
+                    <label for="goal">Мета зворотнього зв’язку</label>
+                    <select id="goal" name="goal">
+                        <option value="cooperation">співпраця</option>
+                        <option value="complaint">скарга на неякісний контент</option>
+                        <option value="proposal">пропозиція</option>
+                        <option value="bug">наявність помилки</option>
+                    </select>
+                </div>
 
                 <div class="form-group">
-                    <label for="fullname">Прізвище та ім’я *</label>
-                    <input type="text" id="fullname" name="fullname" required placeholder="Іванов Іван">
+                    <label for="details">Детально (макс. 500 символів):</label>
+                    <textarea id="details" name="details" rows="5" cols="50" maxlength="500" placeholder="Опишіть ваше звернення детальніше..."></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">E-mail *</label>
-                    <input type="email" id="email" name="email" required placeholder="example@mail.com">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="consent" required> Я даю згоду на обробку персональних даних *
+                    </label>
                 </div>
 
-                <div class="form-group">
-                    <label for="age">Вік *</label>
-                    <input type="number" id="age" name="age" min="10" max="100" required placeholder="18">
+                <div class="btn-group">
+                    <input type="submit" value="Надіслати" class="btn-submit">
+                    <input type="reset" value="Очистити" class="btn-reset">
                 </div>
 
-                <div class="form-group radio-group">
-                    <label>Чи вже вивчаєте мову *?</label>
-                    <label><input type="radio" name="experience" value="pro" required> так, я профі</label><br>
-                    <label><input type="radio" name="experience" value="beginner"> так, але знаю початковими знаннями</label><br>
-                    <label><input type="radio" name="experience" value="planning"> планую</label><br>
-                    <label><input type="radio" name="experience" value="no"> ні</label>
-                </div>
-            </fieldset>
-
-            <!-- Решта полів форми -->
-            <div class="form-group">
-                <label for="goal">Мета зворотнього зв’язку</label>
-                <select id="goal" name="goal">
-                    <option value="cooperation">співпраця</option>
-                    <option value="complaint">скарга на неякісний контент</option>
-                    <option value="proposal">пропозиція</option>
-                    <option value="bug">наявність помилки</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="details">Детально (макс. 500 символів):</label>
-                <textarea id="details" name="details" rows="6" cols="50" maxlength="500" placeholder="Опишіть ваше звернення детальніше..."></textarea>
-            </div>
-
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" name="consent" required> Я даю згоду на обробку моїх персональних даних *
-                </label>
-            </div>
-
-            <div class="btn-group">
-                <input type="submit" value="Надіслати" class="btn">
-                <input type="reset" value="Очистити" class="btn btn-reset">
-            </div>
-
-        </form>
+            </form>
+        </div>
     </div>
 
     <footer>

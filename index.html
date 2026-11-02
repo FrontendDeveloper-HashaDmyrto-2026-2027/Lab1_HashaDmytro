@@ -3,43 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeAcademy - Головна</title>
+    <title>CodeAcademy — Інтерактивний портал вивчення програмування</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; }
-        header, footer { background-color: #2c3e50; color: #fff; padding: 1rem; }
-        nav a { color: #fff; margin-right: 15px; text-decoration: none; font-weight: bold; }
-        .container { display: flex; flex-wrap: wrap; padding: 20px; }
-        main { flex: 3; min-width: 300px; padding-right: 20px; }
-        aside { flex: 1; min-width: 200px; background-color: #f4f4f4; padding: 15px; border-radius: 5px; }
-        table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 8px; text-align: left; }
-        table { width: 100%; margin-top: 15px; }
-        th { background-color: #e9ecef; }
-        .auth-buttons { margin-top: 10px; }
-        .btn { display: inline-block; padding: 8px 15px; background: #3498db; color: white; text-decoration: none; border-radius: 4px; border: none; cursor: pointer; }
-        .btn-alt { background: #2ecc71; }
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --secondary: #10b981;
+            --secondary-hover: #059669;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border: #e2e8f0;
+            --header-bg: #0f172a;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: #ffffff;
+            padding: 1.25rem 0 0.5rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-block img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover; /* Виправляє спотворення: обрізає зайве та зберігає пропорції */
+            border-radius: 8px;
+            display: block;
+        }
+
+        .logo-block h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.55rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary { background-color: var(--primary); color: #ffffff; }
+        .btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-1px); }
+        .btn-success { background-color: var(--secondary); color: #ffffff; }
+        .btn-success:hover { background-color: var(--secondary-hover); transform: translateY(-1px); }
+
+        nav {
+            max-width: 1200px;
+            margin: 1rem auto 0 auto;
+            padding: 0.75rem 1.5rem 0.5rem 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active { color: #ffffff; }
+
+        .wrapper {
+            max-width: 1200px;
+            width: 100%;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            flex: 1;
+        }
+
+        @media (max-width: 900px) {
+            .wrapper { grid-template-columns: 1fr; }
+        }
+
+        main { display: flex; flex-direction: column; gap: 2rem; }
+
+        article {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        article h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        article h3 {
+            font-size: 1.1rem;
+            margin: 1.25rem 0 0.75rem 0;
+        }
+
+        ol[type="A"] {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        ol[type="A"] li { margin-bottom: 0.5rem; }
+
+        .styled-text-box {
+            background-color: #eff6ff;
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .table-container { overflow-x: auto; margin-top: 1rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        caption {
+            caption-side: top;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        th, td { padding: 0.85rem 1rem; border: 1px solid var(--border); }
+        thead th { background-color: #f1f5f9; font-weight: 600; }
+        tbody tr:nth-child(even) { background-color: #f8fafc; }
+        tfoot td { background-color: #f1f5f9; font-weight: 600; color: var(--text-muted); text-align: center; }
+
+        aside {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        aside h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+        aside ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+        aside a { color: var(--primary); text-decoration: none; font-weight: 500; font-size: 0.9rem; }
+        aside a:hover { text-decoration: underline; color: var(--primary-hover); }
+
+        hr { border: 0; height: 1px; background: var(--border); }
+
+        footer {
+            background-color: var(--header-bg);
+            color: #94a3b8;
+            padding: 2rem 0;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        footer b { color: #f8fafc; }
     </style>
 </head>
 <body>
 
     <header>
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <img src="logo.png" alt="CodeAcademy Logo" width="50" height="50">
+        <div class="header-container">
+            <div class="logo-block">
+                <img src="logo.png" alt="CodeAcademy Logo" width="40" height="40">
                 <h1>CodeAcademy</h1>
             </div>
             <div class="auth-buttons">
-                <a href="#login" class="btn">Перейти у власний кабінет</a>
-                <a href="#register" class="btn btn-alt">Зареєструватись</a>
+                <a href="#login" class="btn btn-primary">Перейти у власний кабінет</a>
+                <a href="#register" class="btn btn-success">Зареєструватись</a>
             </div>
         </div>
         <nav>
-            <a href="index.html">Головна</a>
+            <a href="index.html" class="active">Головна</a>
             <a href="topics.html">Навчальні теми</a>
             <a href="feedback.html">Зворотній зв’язок</a>
         </nav>
     </header>
 
-    <div class="container">
+    <div class="wrapper">
         <main>
             <article id="about">
                 <h2>Про веб-портал</h2>
@@ -52,94 +265,102 @@
                     <li>Надати безперервний зворотній зв’язок та менторську підтримку.</li>
                 </ol>
 
-                <p>
+                <div class="styled-text-box">
                     <span>Цей навчальний комплекс <i>допомагає</i> розібратися з <b>основами</b>, містить <em>важливі зауваження</em> та <u>практичні приклади</u>.</span>
-                </p>
+                </div>
             </article>
 
             <article id="topics-table">
                 <h2>Загальна інформація про мову Python та навчальні теми</h2>
                 <p>Python — це високорівнева мова програмування з динамічною типізацією, що ідеально підходить для початківців. Нижче наведено огляд програм та модулів:</p>
 
-                <table>
-                    <caption>Огляд навчальних модулів з Python</caption>
-                    <thead>
-                        <tr>
-                            <th>Модуль</th>
-                            <th>Тема</th>
-                            <th>Кількість уроків</th>
-                            <th>Рівень</th>
-                            <th>Статус</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td rowspan="2">Модуль 1: Основи</td>
-                            <td>Синтаксис та змінні</td>
-                            <td>4</td>
-                            <td>Початковий</td>
-                            <td>Доступний</td>
-                        </tr>
-                        <tr>
-                            <td>Умовні оператори та цикли</td>
-                            <td>6</td>
-                            <td>Початковий</td>
-                            <td>Доступний</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" rowspan="2">Модуль 2: Структури даних (Базовий + Поглиблений)</td>
-                            <td>8</td>
-                            <td>Середній</td>
-                            <td>Доступний</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Середній</td>
-                            <td>В розробці</td>
-                        </tr>
-                        <tr>
-                            <td>Модуль 3: ООП</td>
-                            <td>Класи та об'єкти</td>
-                            <td>7</td>
-                            <td>Просунутий</td>
-                            <td>В розробці</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">Підсумковий проект та сертифікація</td>
-                            <td>Всі рівні</td>
-                            <td>Заплановано</td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="5">Загальна тривалість курсу: 30 практичних занять</td>
-                        </tr>
-                    </tfoot>
-                </table>
+                <div class="table-container">
+                    <table>
+                        <caption>Огляд навчальних модулів з Python</caption>
+                        <thead>
+                            <tr>
+                                <th>Модуль</th>
+                                <th>Тема</th>
+                                <th>Кількість уроків</th>
+                                <th>Рівень</th>
+                                <th>Статус</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="2">Модуль 1: Основи</td>
+                                <td>Синтаксис та змінні</td>
+                                <td>4</td>
+                                <td>Початковий</td>
+                                <td>Доступний</td>
+                            </tr>
+                            <tr>
+                                <td>Умовні оператори та цикли</td>
+                                <td>6</td>
+                                <td>Початковий</td>
+                                <td>Доступний</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" rowspan="2">Модуль 2: Структури даних (Базовий + Поглиблений)</td>
+                                <td>8</td>
+                                <td>Середній</td>
+                                <td>Доступний</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Середній</td>
+                                <td>В розробці</td>
+                            </tr>
+                            <tr>
+                                <td>Модуль 3: ООП</td>
+                                <td>Класи та об'єкти</td>
+                                <td>7</td>
+                                <td>Просунутий</td>
+                                <td>В розробці</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Підсумковий проект та сертифікація</td>
+                                <td>Всі рівні</td>
+                                <td>Заплановано</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">Загальна тривалість курсу: 30 практичних занять</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </article>
         </main>
 
         <aside>
-            <h3>Корисні ресурси</h3>
-            <p>Ви можете ознайомитися з офіційними документаціями за посиланнями:</p>
-            <ul>
-                <li><a href="https://www.python.org" target="_blank" rel="noopener">Офіційний сайт Python</a></li>
-                <li><a href="https://www.w3schools.com" target="_blank" rel="noopener">Навчальний ресурс W3Schools</a></li>
-            </ul>
+            <div>
+                <h3>Корисні ресурси</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">Офіційна документація та довідники:</p>
+                <ul>
+                    <li><a href="https://www.python.org" target="_blank" rel="noopener">Офіційний сайт Python &rarr;</a></li>
+                    <li><a href="https://www.w3schools.com" target="_blank" rel="noopener">Навчальний ресурс W3Schools &rarr;</a></li>
+                </ul>
+            </div>
             <hr>
-            <h3>Швидка навігація</h3>
-            <ul>
-                <li><a href="#about">Про веб-портал</a></li>
-                <li><a href="#topics-table">Таблиця тем</a></li>
-            </ul>
+            <div>
+                <h3>Швидка навігація</h3>
+                <ul>
+                    <li><a href="#about"># Про веб-портал</a></li>
+                    <li><a href="#topics-table"># Таблиця тем</a></li>
+                </ul>
+            </div>
         </aside>
     </div>
 
     <footer>
-        <p><b>Контактна інформація:</b></p>
-        <p>Адреса: м. Київ, вул. Університетська, 15</p>
-        <p>Телефони: +38 (044) 123-45-67, +38 (097) 987-65-43</p>
-        <p>&copy; 2026 CodeAcademy. Всі права захищені.</p>
+        <div class="footer-container">
+            <p><b>Контактна інформація:</b></p>
+            <p>Адреса: м. Київ, вул. Університетська, 15</p>
+            <p>Телефони: +38 (044) 123-45-67, +38 (097) 987-65-43</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #64748b;">&copy; 2026 CodeAcademy. Всі права захищені.</p>
+        </div>
     </footer>
 
 </body>
