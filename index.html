@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeAcademy - Головна</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; }
+        header, footer { background-color: #2c3e50; color: #fff; padding: 1rem; }
+        nav a { color: #fff; margin-right: 15px; text-decoration: none; font-weight: bold; }
+        .container { display: flex; flex-wrap: wrap; padding: 20px; }
+        main { flex: 3; min-width: 300px; padding-right: 20px; }
+        aside { flex: 1; min-width: 200px; background-color: #f4f4f4; padding: 15px; border-radius: 5px; }
+        table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 8px; text-align: left; }
+        table { width: 100%; margin-top: 15px; }
+        th { background-color: #e9ecef; }
+        .auth-buttons { margin-top: 10px; }
+        .btn { display: inline-block; padding: 8px 15px; background: #3498db; color: white; text-decoration: none; border-radius: 4px; border: none; cursor: pointer; }
+        .btn-alt { background: #2ecc71; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <img src="logo.png" alt="CodeAcademy Logo" width="50" height="50">
+                <h1>CodeAcademy</h1>
+            </div>
+            <div class="auth-buttons">
+                <a href="#login" class="btn">Перейти у власний кабінет</a>
+                <a href="#register" class="btn btn-alt">Зареєструватись</a>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html">Головна</a>
+            <a href="topics.html">Навчальні теми</a>
+            <a href="feedback.html">Зворотній зв’язок</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main>
+            <article id="about">
+                <h2>Про веб-портал</h2>
+                <p>Метою нашого порталу є надання доступних та якісних знань з мов програмування для студентів та початківців у сфері IT.</p>
+
+                <h3>Завдання для досягнення мети:</h3>
+                <ol type="A">
+                    <li>Створити структуровані навчальні курси з практичними завданнями.</li>
+                    <li>Забезпечити інтерактивне середовище для перевірки написаного коду.</li>
+                    <li>Надати безперервний зворотній зв’язок та менторську підтримку.</li>
+                </ol>
+
+                <p>
+                    <span>Цей навчальний комплекс <i>допомагає</i> розібратися з <b>основами</b>, містить <em>важливі зауваження</em> та <u>практичні приклади</u>.</span>
+                </p>
+            </article>
+
+            <article id="topics-table">
+                <h2>Загальна інформація про мову Python та навчальні теми</h2>
+                <p>Python — це високорівнева мова програмування з динамічною типізацією, що ідеально підходить для початківців. Нижче наведено огляд програм та модулів:</p>
+
+                <table>
+                    <caption>Огляд навчальних модулів з Python</caption>
+                    <thead>
+                        <tr>
+                            <th>Модуль</th>
+                            <th>Тема</th>
+                            <th>Кількість уроків</th>
+                            <th>Рівень</th>
+                            <th>Статус</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2">Модуль 1: Основи</td>
+                            <td>Синтаксис та змінні</td>
+                            <td>4</td>
+                            <td>Початковий</td>
+                            <td>Доступний</td>
+                        </tr>
+                        <tr>
+                            <td>Умовні оператори та цикли</td>
+                            <td>6</td>
+                            <td>Початковий</td>
+                            <td>Доступний</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" rowspan="2">Модуль 2: Структури даних (Базовий + Поглиблений)</td>
+                            <td>8</td>
+                            <td>Середній</td>
+                            <td>Доступний</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Середній</td>
+                            <td>В розробці</td>
+                        </tr>
+                        <tr>
+                            <td>Модуль 3: ООП</td>
+                            <td>Класи та об'єкти</td>
+                            <td>7</td>
+                            <td>Просунутий</td>
+                            <td>В розробці</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Підсумковий проект та сертифікація</td>
+                            <td>Всі рівні</td>
+                            <td>Заплановано</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5">Загальна тривалість курсу: 30 практичних занять</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </article>
+        </main>
+
+        <aside>
+            <h3>Корисні ресурси</h3>
+            <p>Ви можете ознайомитися з офіційними документаціями за посиланнями:</p>
+            <ul>
+                <li><a href="https://www.python.org" target="_blank" rel="noopener">Офіційний сайт Python</a></li>
+                <li><a href="https://www.w3schools.com" target="_blank" rel="noopener">Навчальний ресурс W3Schools</a></li>
+            </ul>
+            <hr>
+            <h3>Швидка навігація</h3>
+            <ul>
+                <li><a href="#about">Про веб-портал</a></li>
+                <li><a href="#topics-table">Таблиця тем</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer>
+        <p><b>Контактна інформація:</b></p>
+        <p>Адреса: м. Київ, вул. Університетська, 15</p>
+        <p>Телефони: +38 (044) 123-45-67, +38 (097) 987-65-43</p>
+        <p>&copy; 2026 CodeAcademy. Всі права захищені.</p>
+    </footer>
+
+</body>
+</html>
